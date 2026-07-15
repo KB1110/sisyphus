@@ -3,8 +3,9 @@ import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
 
-import indexRouter from "./routes/index.routes.js";
-import healthRouter from "./routes/health.routes.js";
+import index_router from "./routes/index.routes.js";
+import health_router from "./routes/health.routes.js";
+import repository_router from "./routes/repository.routes.js";
 
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.use("/", indexRouter);
-app.use("/health", healthRouter);
+app.use("/", index_router);
+app.use("/health", health_router);
+app.use("/repositories", repository_router);
 
 export default app;
