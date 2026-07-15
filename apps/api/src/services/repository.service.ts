@@ -1,16 +1,7 @@
-interface Repository {
-  id: string;
-  name: string;
-  github_url: string;
-  default_branch: string;
-  status: "pending" | "analysing" | "ready";
-}
-
-interface CreateRepositoryRequest {
-  name: string;
-  github_url: string;
-  default_branch: string;
-}
+import {
+  type Repository,
+  type CreateRepositoryRequest,
+} from "../types/repository.js";
 
 class RepositoryService {
   private repositories: Repository[] = [];
