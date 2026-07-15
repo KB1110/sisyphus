@@ -7,6 +7,9 @@ import index_router from "./routes/index.routes.js";
 import health_router from "./routes/health.routes.js";
 import repository_router from "./routes/repository.routes.js";
 
+import { notFoundMiddleware } from "./middleware/notFound.middleware.js";
+import { errorMiddleware } from "./middleware/error.middleware.js";
+
 const app = express();
 
 app.use(helmet());
@@ -17,5 +20,8 @@ app.use(morgan("dev"));
 app.use("/", index_router);
 app.use("/health", health_router);
 app.use("/repositories", repository_router);
+
+app.use(notFoundMiddleware);
+app.use(errorMiddleware);
 
 export default app;
